@@ -8,6 +8,8 @@ public class Attack : MonoBehaviour
     //public EnemyDatabase enemyDatabase;
     public HealthManager healthManager;
 
+    public TableAdapter ta = new TableAdapter();
+
     float modifier;
     int damage;
 
