@@ -13,6 +13,9 @@ namespace Assets.Scripts
 
             BeastManager bm = new BeastManager();
             bm.Start();
+
+            Beast badBoi = bm.get(4);
+            Console.WriteLine(badBoi.toString());
         }
     }
 }
