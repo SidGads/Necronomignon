@@ -110,40 +110,42 @@ public class CreateManager : MonoBehaviour
     //Remove the image in a slot and remove it from selected variables
     public void RemoveSlotImage()
     {
-        switch (selectedSlotID)
-        {
-            case 1:
-                GameObject.Find("Slot1").GetComponent<SlotSelect>().RemoveImage();
-                slot1 = "";
-                break;
-            case 2:
-                GameObject.Find("Slot2").GetComponent<SlotSelect>().RemoveImage();
-                slot2 = "";
-                break;
-            case 3:
-                GameObject.Find("Slot3").GetComponent<SlotSelect>().RemoveImage();
-                slot3 = "";
-                break;
-            case 4:
-                GameObject.Find("Slot4").GetComponent<SlotSelect>().RemoveImage();
-                slot4 = "";
-                break;
-            case 5:
-                GameObject.Find("Slot5").GetComponent<SlotSelect>().RemoveImage();
-                slot5 = "";
-                break;
-            case 6:
-                GameObject.Find("Slot6").GetComponent<SlotSelect>().RemoveImage();
-                slot6 = "";
-                break;
-        }
-        selected = "";
-        selectedIndex = -1;
-        placed -= 1;
-        CheckPlaceable();
-        moving = false;
-        TurnOffSlots();
-        removeButton.SetActive(false);
+        
+            switch (selectedSlotID)
+            {
+                case 1:
+                    GameObject.Find("Slot1").GetComponent<SlotSelect>().RemoveImage();
+                    slot1 = "";
+                    break;
+                case 2:
+                    GameObject.Find("Slot2").GetComponent<SlotSelect>().RemoveImage();
+                    slot2 = "";
+                    break;
+                case 3:
+                    GameObject.Find("Slot3").GetComponent<SlotSelect>().RemoveImage();
+                    slot3 = "";
+                    break;
+                case 4:
+                    GameObject.Find("Slot4").GetComponent<SlotSelect>().RemoveImage();
+                    slot4 = "";
+                    break;
+                case 5:
+                    GameObject.Find("Slot5").GetComponent<SlotSelect>().RemoveImage();
+                    slot5 = "";
+                    break;
+                case 6:
+                    GameObject.Find("Slot6").GetComponent<SlotSelect>().RemoveImage();
+                    slot6 = "";
+                    break;
+            }
+            selected = "";
+            selectedIndex = -1;
+            placed -= 1;
+            CheckPlaceable();
+            moving = false;
+            TurnOffSlots();
+            removeButton.SetActive(false);
+        Debug.Log("Slot: " + selectedSlotID + "Has been removed");
     }
 
     //Check to see if any more beasts can be placed

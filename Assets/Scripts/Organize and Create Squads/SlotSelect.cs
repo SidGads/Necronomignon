@@ -22,10 +22,10 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             //When mouse is clicked and cursor is over this image, set the beast to this slot
             if (Input.GetMouseButtonDown(0) && !createManager.saveMode)
-            {
-                if (createManager.canBePlaced && createManager.placing) SetImage();
-                else if(createManager.moving && !createManager.placing) MoveImage();
-                else EditPlace();
+            {              
+                    if (createManager.canBePlaced && createManager.placing) SetImage();
+                    else if (createManager.moving && !createManager.placing) MoveImage();
+                    else EditPlace();
             }
         }
     }
@@ -45,10 +45,12 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     //Set the placed beast image to this slot's image
     void SetImage()
     {
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(createPoolLoader.summonedImages[createManager.selectedIndex]);
-        gameObject.GetComponent<Image>().color = Color.white;
-        //gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(125, 125);
-        ChangePoolImage();
+ 
+            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(createPoolLoader.summonedImages[createManager.selectedIndex]);
+            gameObject.GetComponent<Image>().color = Color.white;
+            //gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(125, 125);
+            ChangePoolImage();
+        
     }
 
     //Remove the beast's image from this slot's image
@@ -97,12 +99,15 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     //Set te CreateManager's variables to reflect the selected beast
     void SetSlot()
     {
-        if (gameObject.name == "Slot1") createManager.slot1 = createManager.selected;
-        else if (gameObject.name == "Slot2") createManager.slot2 = createManager.selected;
-        else if (gameObject.name == "Slot3") createManager.slot3 = createManager.selected;
-        else if (gameObject.name == "Slot4") createManager.slot4 = createManager.selected;
-        else if (gameObject.name == "Slot5") createManager.slot5 = createManager.selected;
-        else if (gameObject.name == "Slot6") createManager.slot6 = createManager.selected;
+
+            if (gameObject.name == "Slot1") createManager.slot1 = createManager.selected;
+            else if (gameObject.name == "Slot2") createManager.slot2 = createManager.selected;
+            else if (gameObject.name == "Slot3") createManager.slot3 = createManager.selected;
+            else if (gameObject.name == "Slot4") createManager.slot4 = createManager.selected;
+            else if (gameObject.name == "Slot5") createManager.slot5 = createManager.selected;
+            else if (gameObject.name == "Slot6") createManager.slot6 = createManager.selected;
+            
+
 
         thisBeast = createManager.selected;
         thisBeastIndex = createManager.selectedIndex;
@@ -151,20 +156,32 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     //Select this beast and give options to move to another slot or remove from the grid
     void EditPlace()
     {
-        createManager.selected = thisBeast;
-        createManager.selectedIndex = thisBeastIndex;
-        createManager.selectedSlotID = slotID;
-        createManager.LightUpSlots();
-        createManager.removeButton.SetActive(true);
-        createManager.moving = true;
+        
+            createManager.selected = thisBeast;
+            createManager.selectedIndex = thisBeastIndex;
+            Debug.Log("Current Slot ID: " + slotID);
+            Debug.Log("Selected Slot: " + createManager.selectedSlotID);
+
+            createManager.selectedSlotID = slotID;
+            createManager.LightUpSlots();
+            createManager.removeButton.SetActive(true);
+            createManager.moving = true;
+    
+          
     }
 
     //Move this beast to another slot
     void MoveImage()
     {
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(createPoolLoader.summonedImages[createManager.selectedIndex]);
-        gameObject.GetComponent<Image>().color = Color.white;
-        SetSlot();
-        createManager.RemoveSlotImage();
+           
+       
+        if (slotID != createManager.selectedSlotID) // Abdul - I added this to fix the dissapearing act in Create Squad, It verifies if the selected slot matches the previously recorded slot, if it's not the same slot then it will work
+        {
+            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(createPoolLoader.summonedImages[createManager.selectedIndex]);
+            gameObject.GetComponent<Image>().color = Color.white;
+            SetSlot();
+            createManager.RemoveSlotImage();
+        }
+
     }
 }
