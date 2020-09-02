@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,51 +21,51 @@ public class HealthManager : MonoBehaviour
     public int enemy4 = 0;
     public int enemiesLeft = 0;
 
-    List<string> squad = new List<string>();
-    List<string> enemies = new List<string>();
+    List<Beast> squad = new List<Beast>();
+    List<Beast> enemies = new List<Beast>();
 
     //Get the health for each beast in play from BeastDatabase
-    public void GetHealth(List<string> players, List<string> opposing)
+    public void GetHealth(List<Beast> players, List<Beast> opposing)
     {
         squad = players;
         enemies = opposing;
 
-        player1 = beastDatabase.GetHitPoints(players[0]);
-        player2 = beastDatabase.GetHitPoints(players[1]);
-        player3 = beastDatabase.GetHitPoints(players[2]);
-        player4 = beastDatabase.GetHitPoints(players[3]);
+        player1 = players[0].HitPoints;
+        player2 = players[1].HitPoints;
+        player3 = players[2].HitPoints;
+        player4 = players[3].HitPoints;
 
-        if(opposing[0] != "") 
+        if(opposing[0] != null) 
         {
             enemiesLeft += 1;
-            enemy1 = beastDatabase.GetHitPoints(opposing[0]);
+            enemy1 = opposing[0].HitPoints;
         }
-        if (opposing[1] != "")
+        if (opposing[1] != null)
         {
             enemiesLeft += 1;
-            enemy2 = beastDatabase.GetHitPoints(opposing[1]);
+            enemy2 = opposing[1].HitPoints;
         }
-        if (opposing[2] != "")
+        if (opposing[2] != null)
         {
             enemiesLeft += 1;
-            enemy3 = beastDatabase.GetHitPoints(opposing[2]);
+            enemy3 = opposing[2].HitPoints;
         }
-        if (opposing[3] != "")
+        if (opposing[3] != null)
         {
             enemiesLeft += 1;
-            enemy4 = beastDatabase.GetHitPoints(opposing[3]);
+            enemy4 = opposing[3].HitPoints;
         }
     }
 
     //Subtract the damage from the target's health
-    public void UpdateHealth(string target, int damage, string attacking) 
+    public void UpdateHealth(Beast target, int damage, string attacking) 
     {
         if (target == squad[0] && attacking != "Player")
         {
             player1 -= damage;
             if(player1 <= 0)
             {
-                Debug.Log(target + " is knocked out.");
+                Debug.Log(target.Name + " is knocked out.");
                 CheckRemainingPlayers();
                 battleManager.RemoveBeast("player1");
             }
@@ -173,9 +174,9 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    void DisplayHealthLeft(string attacking, string target, int healthLeft)
+    void DisplayHealthLeft(string attacking, Beast target)
     {
-        Debug.Log(attacking + "'s " + target + " has " + healthLeft + " health left.");
+        Debug.Log(attacking + "'s " + target + " has " + target.HitPoints + " health left.");
     }
 
     //Check to see if there are any players left, if not end game

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,31 +13,31 @@ public class BattleManager : MonoBehaviour
 
     public Text txtTurn;
 
-    List<string> players = new List<string>();
-    List<string> enemies = new List<string>();
-    public List<string> roundOrder = new List<string>();
+    List<Beast> players = new List<Beast>();
+    List<Beast> enemies = new List<Beast>();
+    public List<Beast> roundOrder = new List<Beast>();
     public List<string> roundOrderTypes = new List<string>();
-    List<string> attackPool = new List<string>();
+    List<Beast> attackPool = new List<Beast>();
 
 
     public int turn = 0;
     int totalMoves;
     int totalBeasts = 8;
 
-    public string currentTurn;
+    public Beast currentTurn;
 
-    string slot1;
-    string slot2;
-    string slot3;
-    string slot4;
-    string slot5;
-    string slot6;
-    public string enemySlot1;
-    public string enemySlot2;
-    public string enemySlot3;
-    public string enemySlot4;
-    public string enemySlot5;
-    public string enemySlot6;
+    Beast slot1;
+    Beast slot2;
+    Beast slot3;
+    Beast slot4;
+    Beast slot5;
+    Beast slot6;
+    public Beast enemySlot1;
+    public Beast enemySlot2;
+    public Beast enemySlot3;
+    public Beast enemySlot4;
+    public Beast enemySlot5;
+    public Beast enemySlot6;
 
     public bool player1Active = true;
     public bool player2Active = true;
@@ -57,7 +58,7 @@ public class BattleManager : MonoBehaviour
     int enemy4TurnsTaken;
 
     //Get lists from LoadMission and add the players to the attack pool
-    public void SendLists(List<string> thisSquad, List<string> enemySquad)
+    public void SendLists(List<Beast> thisSquad, List<Beast> enemySquad)
     {
         players = thisSquad;
         enemies = enemySquad;
@@ -70,7 +71,7 @@ public class BattleManager : MonoBehaviour
     }
 
     //Get the slot info for each beast from LoadMission
-    public void GetSlots(string s1, string s2, string s3, string s4, string s5, string s6, string e1, string e2, string e3, string e4, string e5, string e6) 
+    public void GetSlots(Beast s1, Beast s2, Beast s3, Beast s4, Beast s5, Beast s6, Beast e1, Beast e2, Beast e3, Beast e4, Beast e5, Beast e6) 
     {
         slot1 = s1;
         slot2 = s2;
@@ -99,26 +100,26 @@ public class BattleManager : MonoBehaviour
         int moves8 = 0;
 
         //Get each players moves per round
-        if(player1Active) moves1 = beastDatabase.GetMoves(players[0]);
-        if(player2Active) moves2 = beastDatabase.GetMoves(players[1]);
-        if(player3Active) moves3 = beastDatabase.GetMoves(players[2]);
-        if(player4Active) moves4 = beastDatabase.GetMoves(players[3]);
-        if(enemy1Active) moves5 = beastDatabase.GetMoves(enemies[0]);
-        if(enemy2Active) moves6 = beastDatabase.GetMoves(enemies[1]);
-        if(enemy3Active) moves7 = beastDatabase.GetMoves(enemies[2]);
-        if(enemy4Active) moves8 = beastDatabase.GetMoves(enemies[3]);
+        if(player1Active) moves1 = players[0].MOVES1;
+        if(player2Active) moves2 = players[1].MOVES1;
+        if(player3Active) moves3 = players[2].MOVES1;
+        if(player4Active) moves4 = players[3].MOVES1;
+        if(enemy1Active) moves5 = enemies[0].MOVES1;
+        if(enemy2Active) moves6 = enemies[1].MOVES1;
+        if(enemy3Active) moves7 = enemies[2].MOVES1;
+        if(enemy4Active) moves8 = enemies[3].MOVES1;
 
         totalMoves = moves1 + moves2 + moves3 + moves4 + moves5 + moves6 + moves7 + moves8;
 
         //Get each player's speed
-        int speed1 = beastDatabase.GetSpeed(players[0]);
-        int speed2 = beastDatabase.GetSpeed(players[1]);
-        int speed3 = beastDatabase.GetSpeed(players[2]);
-        int speed4 = beastDatabase.GetSpeed(players[3]);
-        int speed5 = beastDatabase.GetSpeed(enemies[0]);
-        int speed6 = beastDatabase.GetSpeed(enemies[1]);
-        int speed7 = beastDatabase.GetSpeed(enemies[2]);
-        int speed8 = beastDatabase.GetSpeed(enemies[3]);
+        int speed1 = players[0].Speed;
+        int speed2 = players[1].Speed;
+        int speed3 = players[2].Speed;
+        int speed4 = players[3].Speed;
+        int speed5 = enemies[0].Speed;
+        int speed6 = enemies[1].Speed;
+        int speed7 = enemies[2].Speed;
+        int speed8 = enemies[3].Speed;
 
         int i = 0;
 
@@ -236,7 +237,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void Attack(string target)
+    public void Attack(Beast target)
     {
         //Check to see if the round is still going and then run an attack
         if (turn == totalMoves - 1)
@@ -263,7 +264,7 @@ public class BattleManager : MonoBehaviour
     }
 
     //Enemy targets a random player from a pool of active player beasts
-    string GetEnemyTarget()
+    Beast GetEnemyTarget()
     {
         int rand = Random.Range(0, attackPool.Count);
         return attackPool[rand];

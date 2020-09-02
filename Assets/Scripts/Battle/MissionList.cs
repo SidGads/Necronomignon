@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +7,13 @@ public class MissionList : MonoBehaviour
 {
     public string mission; //Set in inspector
 
-    public List<string> enemies = new List<string>();
+    public List<Beast> enemies = new List<Beast>();
 
     private void Awake()
     {
         if(mission == "sample")
         {
+
             enemies.Add("Sunbather"); //A1
             enemies.Add("Gaia"); //B1
             enemies.Add("Cthulhu"); //A2

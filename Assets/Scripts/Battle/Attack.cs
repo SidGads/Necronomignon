@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +13,11 @@ public class Attack : MonoBehaviour
     float modifier;
     int damage;
 
-    public void InitiateAttack(string attacker, string target, string row, string attacking)
+    public void InitiateAttack(Beast attacker, Beast target, string row, string attacking)
     {
 
         //Calculate the chance that an attack misses
-        float missChance = beastDatabase.GetSkill(attacker) - (beastDatabase.GetSpeed(target) / 5);
+        float missChance = attacker.Skill - (target.Speed / 5);
         missChance = 3 / missChance;
 
         //Get Random variable 
@@ -30,7 +31,7 @@ public class Attack : MonoBehaviour
         else
         {
             //Calculate the chance that an attack is blocked
-            float blockChance = 1000 / beastDatabase.GetSkill(target);
+            float blockChance = 1000 / target.Skill;
             blockChance = 3 / blockChance;
 
             //Get new random variable
@@ -44,7 +45,7 @@ public class Attack : MonoBehaviour
             else
             {
                 //Calculate the chance that an attack is a critical hit
-                float criticalChance = beastDatabase.GetSkill(attacker) / 5;
+                float criticalChance = attacker.Skill / 5;
                 criticalChance = 2 / criticalChance;
 
                 //Get new random variable
@@ -66,25 +67,25 @@ public class Attack : MonoBehaviour
         }
     }
 
-    void CalculateDamage(string attacker, string target, string row, string attacking)
+    void CalculateDamage(Beast attacker, Beast target, string row, string attacking)
     {
         float dmg;
         if(row == "A")
         {
             //Calculates the damage if the attacker is in row A
-            dmg = beastDatabase.GetPower(attacker) * beastDatabase.GetMoveA(attacker) / beastDatabase.GetDefense(target) * modifier;
+            dmg = attacker.Power * attacker.MoveA / target.Defense * modifier;
         }
         else
         {
             //Calculates the damage if the attacker is in row B
-            dmg = beastDatabase.GetPower(attacker) * beastDatabase.GetMoveB(attacker) / beastDatabase.GetDefense(target) * modifier;
+            dmg = attacker.Power * attacker.MoveB / target.Defense * modifier;
         }
 
         damage = (int)dmg; //Convert damage to an integer
         ApplyDamage(attacker, target, attacking);
     }
 
-    void ApplyDamage(string attacker, string target, string attacking)
+    void ApplyDamage(Beast attacker, Beast target, string attacking)
     {
         //Display Debug messages for the attack
         if(attacking == "Player")

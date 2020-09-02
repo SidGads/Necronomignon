@@ -8,17 +8,28 @@ namespace Assets.Scripts
 {
     public class Beast
     {
-        public bool Summoned = true;
-        public int Rating = 0;
-        public int HitPoints = 700;
-        public int Defense = 60;
-        public int Power = 50;
-        public int Speed = 35;
-        public int Skill = 30;
-        public int MOVES = 2;
-        public int MoveA = 60;
-        public int MoveB = 40;
-        public String name;
+        private bool summoned = true;
+        private int rating = 0;
+        private int hitPoints = 700;
+        private int defense = 60;
+        private int power = 50;
+        private int speed = 35;
+        private int skill = 30;
+        private int MOVES = 2;
+        private int moveA = 60;
+        private int moveB = 40;
+        private String name;
+
+        public bool Summoned { get => summoned; set => summoned = value; }
+        public String Name { get => name; set => name = value; }
+        public int HitPoints { get => hitPoints; set => hitPoints = value; }
+        public int Defense { get => defense; set => defense = value; }
+        public int Power { get => power; set => power = value; }
+        public int Speed { get => speed; set => speed = value; }
+        public int Skill { get => skill; set => skill = value; }
+        public int MOVES1 { get => MOVES; set => MOVES = value; }
+        public int MoveA { get => moveA; set => moveA = value; }
+        public int MoveB { get => moveB; set => moveB = value; }
 
         public String toString()
         {
@@ -30,10 +41,24 @@ namespace Assets.Scripts
             str += "Power = " + Power + "\n";
             str += "Speed = " + Speed + "\n";
             str += "Skill = " + Skill + "\n";
-            str += "Moves = " + MOVES + "\n";
+            str += "Moves = " + MOVES1 + "\n";
             str += "Move A = " + MoveA + "\n";
             str += "Move B = " + MoveB + "\n";
             return str;
+        }
+        override
+        public bool Equals(object obj)
+        {
+            if (obj.GetType() == typeof(Beast))
+            {
+                Beast b = (Beast)obj;
+
+                if (b.Name.Equals(this.name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

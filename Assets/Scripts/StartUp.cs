@@ -15,7 +15,7 @@ namespace Assets.Scripts
             bm.Start();
 
             Beast badBoi = bm.get(4);
-            Console.WriteLine(badBoi.toString());
+            Console.WriteLine();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,12 +23,12 @@ public class LoadMission : MonoBehaviour
     public Image slot5Img;
     public Image slot6Img;
 
-    public string slot1;
-    public string slot2;
-    public string slot3;
-    public string slot4;
-    public string slot5;
-    public string slot6;
+    public Beast slot1;
+    public Beast slot2;
+    public Beast slot3;
+    public Beast slot4;
+    public Beast slot5;
+    public Beast slot6;
 
     public Image enemySlot1Img;
     public Image enemySlot2Img;
@@ -44,8 +45,8 @@ public class LoadMission : MonoBehaviour
     public string enemySlot6;
 
     List<string> thisSquad = new List<string>();
-    List<string> toLoad = new List<string>();
-    List<string> enemyToLoad = new List<string>();
+    List<Beast> toLoad = new List<Beast>();
+    List<Beast> enemyToLoad = new List<Beast>();
     List<string> enemySquad = new List<string>();
 
     int squadMissing = 0;
@@ -98,7 +99,7 @@ public class LoadMission : MonoBehaviour
     //If enemy is there, load the corresponding image
     void LoadEnemySquadImages()
     {
-        if (enemyToLoad[0] != "")
+        if (enemyToLoad[0] != null)
         {
             enemySlot1Img.sprite = Resources.Load<Sprite>(GetImage(enemyToLoad[0]));
             enemySlot1 = enemyToLoad[0];
@@ -146,7 +147,7 @@ public class LoadMission : MonoBehaviour
     void LoadSquadImages()
     {
         grid.SetActive(true);
-        if (toLoad[0] != "")
+        if (toLoad[0] != null)
         {
             slot1Img.sprite = Resources.Load<Sprite>(GetImage(toLoad[0]));
             slot1 = toLoad[0];
@@ -193,25 +194,26 @@ public class LoadMission : MonoBehaviour
     }
 
     //Get the images from the resources folder to be loaded
-    string GetImage(string beast)
+    //to fix
+    string GetImage(Beast beast)
     {
-        if (beast == "Gaia") return "Boss Nature Titan Tellia-4";
-        else if (beast == "Cthulhu") return "Boss Cthulhu-3";
-        else if (beast == "Trogdor") return "Boss Mythical Stag Kyris-3";
-        else if (beast == "Behemoth") return "Boss Wolfbull Demon Goliath-4";
-        else if (beast == "Naglfar") return "Dragons Hydra-3";
-        else if (beast == "Sunbather") return "Boss Darklord Excelsios-1";
+        if (beast.Equals(BeastManager.getFromNameS("Gaia"))) return "Boss Nature Titan Tellia-4";
+        else if (beast.Equals(BeastManager.getFromNameS("Cthulhu"))) return "Boss Cthulhu-3";
+        else if (beast.Equals(BeastManager.getFromNameS("Trogdor"))) return "Boss Mythical Stag Kyris-3";
+        else if (beast.Equals(BeastManager.getFromNameS("Behemoth"))) return "Boss Wolfbull Demon Goliath-4";
+        else if (beast.Equals(BeastManager.getFromNameS("Naglfar"))) return "Dragons Hydra-3";
+        else if (beast.Equals(BeastManager.getFromNameS("Sunbather"))) return "Boss Darklord Excelsios-1";
         else return "";
     }
 
     //Remove image when beast is knocked out
-    public void RemoveImage(string toRemove, string owner)
+    public void RemoveImage(Beast toRemove, string owner)
     {
         GetImageToRemove(toRemove, owner).gameObject.SetActive(false);
     }
 
     //Get the slot to remove the image from
-    Image GetImageToRemove(string beast, string owner)
+    Image GetImageToRemove(Beast beast, string owner)
     {
         if(owner == "Player")
         {
