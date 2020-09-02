@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class CreatePoolLoader : MonoBehaviour
     public Image slot9;
 
     public List<string> summonedImages = new List<string>();
-    public List<string> summoned = new List<string>();
+    public List<Beast> summoned = new List<Beast>();
 
     public BeastDatabase beastDatabase;
     public CreateManager createManager;
@@ -27,32 +28,32 @@ public class CreatePoolLoader : MonoBehaviour
         if (beastDatabase.GetStatus("Gaia"))
         {
             summonedImages.Add("Boss Nature Titan Tellia-4");
-            summoned.Add("Gaia");
+            summoned.Add(BeastManager.getFromNameS("Gaia"));
         }
         if (beastDatabase.GetStatus("Cthulhu"))
         {
             summonedImages.Add("Boss Cthulhu-3");
-            summoned.Add("Cthulhu");
+            summoned.Add(BeastManager.getFromNameS("Cthulhu"));
         }
         if (beastDatabase.GetStatus("Trogdor"))
         {
             summonedImages.Add("Boss Mythical Stag Kyris-3");
-            summoned.Add("Trogdor");
+            summoned.Add(BeastManager.getFromNameS("Trogdor"));
         }
         if (beastDatabase.GetStatus("Behemoth"))
         {
             summonedImages.Add("Boss Wolfbull Demon Goliath-4");
-            summoned.Add("Behemoth");
+            summoned.Add(BeastManager.getFromNameS("Behemoth"));
         }
         if (beastDatabase.GetStatus("Naglfar"))
         {
             summonedImages.Add("Dragons Hydra-3");
-            summoned.Add("Naglfar");
+            summoned.Add(BeastManager.getFromNameS("Naglfar"));
         }
         if (beastDatabase.GetStatus("Sunbather"))
         {
             summonedImages.Add("Boss Darklord Excelsios-1");
-            summoned.Add("Sunbather");
+            summoned.Add(BeastManager.getFromNameS("Sunbather"));
         }
 
         SetImages();

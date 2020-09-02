@@ -71,7 +71,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, player1);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == squad[1] && attacking != "Player")
@@ -85,7 +85,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, player2);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == squad[2] && attacking != "Player")
@@ -99,7 +99,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, player3);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == squad[3] && attacking != "Player")
@@ -113,7 +113,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, player4);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == enemies[0] && attacking == "Player")
@@ -127,7 +127,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, enemy1);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == enemies[1] && attacking == "Player")
@@ -141,7 +141,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, enemy2);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == enemies[2] && attacking == "Player")
@@ -155,7 +155,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, enemy3);
+                DisplayHealthLeft(attacking, target);
             }
         }
         else if (target == enemies[3] && attacking == "Player")
@@ -169,7 +169,7 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                DisplayHealthLeft(attacking, target, enemy4);
+                DisplayHealthLeft(attacking, target);
             }
         }
     }

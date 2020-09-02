@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -42,7 +43,7 @@ public class AttackClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
     //Get the name of the beast that this slot is holding
-    string GetName()
+    Beast GetName()
     {
         if (gameObject.name == "Slot1") return battleManager.enemySlot1;
         else if (gameObject.name == "Slot2") return battleManager.enemySlot2;
@@ -50,7 +51,7 @@ public class AttackClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         else if (gameObject.name == "Slot4") return battleManager.enemySlot4;
         else if (gameObject.name == "Slot5") return battleManager.enemySlot5;
         else if (gameObject.name == "Slot6") return battleManager.enemySlot6;
-        else return "";
+        else return null;
 
     }
 }

@@ -19,6 +19,7 @@ namespace Assets.Scripts
         private int moveA = 60;
         private int moveB = 40;
         private String name;
+        private String static_image;
 
         public bool Summoned { get => summoned; set => summoned = value; }
         public String Name { get => name; set => name = value; }
@@ -30,6 +31,7 @@ namespace Assets.Scripts
         public int MOVES1 { get => MOVES; set => MOVES = value; }
         public int MoveA { get => moveA; set => moveA = value; }
         public int MoveB { get => moveB; set => moveB = value; }
+        public string Static_image { get => static_image; set => static_image = value; }
 
         public String toString()
         {

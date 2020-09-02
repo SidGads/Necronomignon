@@ -14,12 +14,12 @@ public class MissionList : MonoBehaviour
         if(mission == "sample")
         {
 
-            enemies.Add("Sunbather"); //A1
-            enemies.Add("Gaia"); //B1
-            enemies.Add("Cthulhu"); //A2
-            enemies.Add(""); //B2
-            enemies.Add(""); //A3
-            enemies.Add("Trogdor"); //B3
+            enemies.Add(BeastManager.getFromNameS("Sunbather")); //A1
+            enemies.Add(BeastManager.getFromNameS("Gaia")); //B1
+            enemies.Add(BeastManager.getFromNameS("Cthulhu")); //A2
+            enemies.Add(null); //B2
+            enemies.Add(null); //A3
+            enemies.Add(BeastManager.getFromNameS("Trogdor")); //B3
         }
     }
 

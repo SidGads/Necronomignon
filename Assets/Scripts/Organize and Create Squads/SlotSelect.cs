@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,7 +14,7 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public int slotID; //Set in inspector
 
-    string thisBeast;
+    Beast thisBeast;
     int thisBeastIndex;
 
     void Update()
@@ -115,7 +116,7 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         createManager.placed += 1;
         createManager.placing = false;
         createManager.CheckPlaceable();
-        createManager.selected = "";
+        createManager.selected = null;
         createManager.selectedIndex = -1;
         createManager.TurnOffSlots();
     }
@@ -123,27 +124,27 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     //Get the faded image of the placed beast
     string GetFadedImage()
     {
-        if(createManager.selected == "Gaia")
+        if(createManager.selected.Equals(BeastManager.getFromNameS("Gaia")))
         {
             return "EmptyRectangle";
         }
-        else if(createManager.selected == "Cthulhu")
+        else if(createManager.selected.Equals(BeastManager.getFromNameS("Cthulhu")))
         {
             return "EmptyRectangle";
         }
-        else if(createManager.selected == "Trogdor")
+        else if(createManager.selected.Equals(BeastManager.getFromNameS("Trogdor")))
         {
             return "EmptyRectangle";
         }
-        else if(createManager.selected == "Naglfar")
+        else if(createManager.selected.Equals(BeastManager.getFromNameS("Naglfar")))
         {
             return "EmptyRectangle";
         }
-        else if(createManager.selected == "Behemoth")
+        else if(createManager.selected.Equals(BeastManager.getFromNameS("Behemoth")))
         {
             return "EmptyRectangle";
         }
-        else if(createManager.selected == "Sunbather")
+        else if(createManager.selected.Equals(BeastManager.getFromNameS("Sunbather")))
         {
             return "EmptyRectangle";
         }

@@ -99,6 +99,39 @@ public class BeastManager
         return b;
     }
 
+    internal static Beast getS(int id)
+    {
+        Beast b = new Beast();
+        SqlConnection myConnection = new SqlConnection(con);
+        string line = "select * from Beast_directory where id=@id";
+
+        SqlCommand cmd = new SqlCommand(line, myConnection);
+
+        cmd.Parameters.AddWithValue("@id", id);
+
+        myConnection.Open();
+
+        SqlDataReader oReader = cmd.ExecuteReader();
+
+
+        oReader.Read();
+
+        b.Name = oReader["name"].ToString();
+        b.Summoned = (bool)oReader["isSummoned"];
+        b.HitPoints = (int)oReader["hp"];
+        b.Defense = (int)oReader["defence"];
+        b.Power = (int)oReader["power"];
+        b.Speed = (int)oReader["speed"];
+        b.Skill = (int)oReader["skill"];
+        b.MOVES1 = (int)oReader["moves"];
+        b.MoveA = (int)oReader["moveA"];
+        b.MoveB = (int)oReader["moveB"];
+
+
+        myConnection.Close();
+
+        return b;
+    }
 
     public static Beast getFromNameS(String name)
     {
@@ -127,6 +160,7 @@ public class BeastManager
         b.MOVES1 = (int)oReader["moves"];
         b.MoveA = (int)oReader["moveA"];
         b.MoveB = (int)oReader["moveB"];
+        b.Static_image = oReader["static_image"].ToString();
 
 
         myConnection.Close();

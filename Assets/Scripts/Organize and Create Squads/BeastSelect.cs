@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -61,7 +62,7 @@ public class BeastSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //Check to make sure that this beast is not already in the grid
     bool NotSummoned()
     {
-        string beast = createPoolLoader.summoned[GetThisBeast()];
+        Beast beast = BeastManager.getS(GetThisBeast());
         if (createManager.slot1 != beast && createManager.slot2 != beast && createManager.slot3 != beast
         && createManager.slot4 != beast && createManager.slot5 != beast && createManager.slot6 != beast)
         {

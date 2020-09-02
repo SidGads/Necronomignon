@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,75 +67,57 @@ public class LoadSquads : MonoBehaviour
 
     void LoadSquad1Images()
     {
-        List<string> toLoad = new List<string>();
+        List<Beast> toLoad = new List<Beast>();
         toLoad = squadData.GetSquadList(1);
 
-        if (toLoad[0] != "")
+        if (toLoad[0] != null)
         {
-            s1s1.sprite = Resources.Load<Sprite>(GetImage(toLoad[0]));
+            s1s1.sprite = Resources.Load<Sprite>(toLoad[0].Static_image);
             squad1Slot1.SetActive(true);
         }
-        if (toLoad[1] != "")
+        if (toLoad[1] != null)
         {
-            s1s2.sprite = Resources.Load<Sprite>(GetImage(toLoad[1]));
+            s1s2.sprite = Resources.Load<Sprite>(toLoad[1].Static_image);
             squad1Slot2.SetActive(true);
         }
-        if (toLoad[2] != "")
+        if (toLoad[2] != null)
         {
-            s1s3.sprite = Resources.Load<Sprite>(GetImage(toLoad[2]));
+            s1s3.sprite = Resources.Load<Sprite>(toLoad[2].Static_image);
             squad1Slot3.SetActive(true);
         }
-        if (toLoad[3] != "")
+        if (toLoad[3] != null)
         {
-            s1s4.sprite = Resources.Load<Sprite>(GetImage(toLoad[3]));
+            s1s4.sprite = Resources.Load<Sprite>(toLoad[3].Static_image);
             squad1Slot4.SetActive(true);
         }
-        if (toLoad[4] != "")
+        if (toLoad[4] != null)
         {
-            s1s5.sprite = Resources.Load<Sprite>(GetImage(toLoad[4]));
+            s1s5.sprite = Resources.Load<Sprite>(toLoad[4].Static_image);
             squad1Slot5.SetActive(true);
         }
-        if (toLoad[5] != "")
+        if (toLoad[5] != null)
         {
-            s1s6.sprite = Resources.Load<Sprite>(GetImage(toLoad[5]));
+            s1s6.sprite = Resources.Load<Sprite>(toLoad[5].Static_image);
             squad1Slot6.SetActive(true);
         }
     }
 
     void LoadSquad2Images()
     {
-        List<string> toLoad = new List<string>();
+        List<Beast> toLoad = new List<Beast>();
         toLoad = squadData.GetSquadList(2);
-        if (toLoad[0] != "")
+
+        for(int x = 0; x < toLoad.Count; x++)
         {
-            s2s1.sprite = Resources.Load<Sprite>(GetImage(toLoad[0]));
-            squad2Slot1.SetActive(true);
+            if (toLoad[x] != null)
+            {
+                s2s1.sprite = Resources.Load<Sprite>(toLoad[x].Static_image);
+                squad2Slot1.SetActive(true);
+            }
         }
-        if (toLoad[1] != "")
-        {
-            s2s2.sprite = Resources.Load<Sprite>(GetImage(toLoad[1]));
-            squad2Slot2.SetActive(true);
-        }
-        if (toLoad[2] != "")
-        {
-            s2s3.sprite = Resources.Load<Sprite>(GetImage(toLoad[2]));
-            squad2Slot3.SetActive(true);
-        }
-        if (toLoad[3] != "")
-        {
-            s2s4.sprite = Resources.Load<Sprite>(GetImage(toLoad[3]));
-            squad2Slot4.SetActive(true);
-        }
-        if (toLoad[4] != "")
-        {
-            s2s5.sprite = Resources.Load<Sprite>(GetImage(toLoad[4]));
-            squad2Slot5.SetActive(true);
-        }
-        if (toLoad[5] != "")
-        {
-            s2s6.sprite = Resources.Load<Sprite>(GetImage(toLoad[5]));
-            squad2Slot6.SetActive(true);
-        }
+
+        
+        
     }
 
     string GetImage(string beast)
