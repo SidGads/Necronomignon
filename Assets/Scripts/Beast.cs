@@ -18,11 +18,12 @@ namespace Assets.Scripts
         public int MOVES = 2;
         public int MoveA = 60;
         public int MoveB = 40;
-        internal object name;
+        public String name;
 
         public String toString()
         {
             String str = "";
+            str += "Name = " + name + "\n";
             str += "Summoned = " + Summoned+"\n";
             str += "HP = " + HitPoints + "\n";
             str += "Defense = " + Defense + "\n";

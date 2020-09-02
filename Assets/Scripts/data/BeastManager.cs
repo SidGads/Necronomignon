@@ -51,7 +51,7 @@ public class BeastManager
 
         oReader.Read();
         
-        b.name = oReader["name"];
+        b.name = oReader["name"].ToString();
         b.Summoned = (bool)oReader["isSummoned"];
         b.HitPoints = (int)oReader["hp"];
         b.Defense = (int)oReader["defence"];
