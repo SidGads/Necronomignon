@@ -161,6 +161,7 @@ public class SlotSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             createManager.selectedIndex = thisBeastIndex;
             Debug.Log("Current Slot ID: " + slotID);
             Debug.Log("Selected Slot: " + createManager.selectedSlotID);
+            Debug.Log("Slots: " + createManager.slot1+ "-"+ createManager.slot2 + "-" + createManager.slot3 + "-" + createManager.slot4 + "-" + createManager.slot5 + "-" + createManager.slot6 + "-");
 
             createManager.selectedSlotID = slotID;
             createManager.LightUpSlots();
