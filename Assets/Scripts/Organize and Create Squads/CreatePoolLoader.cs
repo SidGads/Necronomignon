@@ -24,6 +24,8 @@ public class CreatePoolLoader : MonoBehaviour
     void Start()
     {
         //Add the image names to a list if they are summoned
+
+        // Abdul - We will need to change the method GetStatus to match our BeastManager Script methods
         if (beastDatabase.GetStatus("Gaia"))
         {
             summonedImages.Add("Boss Nature Titan Tellia-4");

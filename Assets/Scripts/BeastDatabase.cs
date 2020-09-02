@@ -86,6 +86,7 @@ public class BeastDatabase : MonoBehaviour
 
     public bool GetStatus(string beast)
     {
+        // Abdul - This method would need to query through the Beast_Directory Table for a similar name (String) and return results
         if (beast == "Cthulhu") return cthulhuSummoned;
         else if (beast == "Gaia") return gaiaSummoned;
         else if (beast == "Trogdor") return trogdorSummoned;
