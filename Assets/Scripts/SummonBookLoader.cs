@@ -16,7 +16,7 @@ public class SummonBookLoader : MonoBehaviour
 
     void Start()
     {
-        if (beastDatabase.GetStatus("Cthulhu")) cthulhuImage.sprite = Resources.Load<Sprite>("Boss Cthulhu-3");
+        if (BeastManager.getFromNameS("Cthulhu").Summoned) cthulhuImage.sprite = Resources.Load<Sprite>("Boss Cthulhu-3");
         else cthulhuImage.sprite = Resources.Load<Sprite>("Boss Cthulhu-1");
     }
 }

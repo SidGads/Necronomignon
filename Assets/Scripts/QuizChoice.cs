@@ -1,21 +1,24 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class QuizChoice : MonoBehaviour
 {
-    public BeastDatabase beastDatabase;
+    
 
-    string currentBeast;
+    Beast currentBeast;
 
-    public void GetBeast(string beast)
+    public void GetBeast(Beast beast)
     {
         currentBeast = beast;
     }
 
     public void ChoiceClick(int addRate)
     {
-        beastDatabase.ChangeRating(currentBeast, beastDatabase.GetRating(currentBeast) + addRate);
+        currentBeast.Rating += addRate;
+            
+        
     }
 }

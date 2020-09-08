@@ -25,32 +25,32 @@ public class CreatePoolLoader : MonoBehaviour
     void Start()
     {
         //Add the image names to a list if they are summoned
-        if (beastDatabase.GetStatus("Gaia"))
+        if (BeastManager.getFromNameS("Gaia").Summoned)
         {
             summonedImages.Add("Boss Nature Titan Tellia-4");
             summoned.Add(BeastManager.getFromNameS("Gaia"));
         }
-        if (beastDatabase.GetStatus("Cthulhu"))
+        if (BeastManager.getFromNameS("Cthulhu").Summoned)
         {
             summonedImages.Add("Boss Cthulhu-3");
             summoned.Add(BeastManager.getFromNameS("Cthulhu"));
         }
-        if (beastDatabase.GetStatus("Trogdor"))
+        if (BeastManager.getFromNameS("Trogdor").Summoned)
         {
             summonedImages.Add("Boss Mythical Stag Kyris-3");
             summoned.Add(BeastManager.getFromNameS("Trogdor"));
         }
-        if (beastDatabase.GetStatus("Behemoth"))
+        if (BeastManager.getFromNameS("Behemoth").Summoned)
         {
             summonedImages.Add("Boss Wolfbull Demon Goliath-4");
             summoned.Add(BeastManager.getFromNameS("Behemoth"));
         }
-        if (beastDatabase.GetStatus("Naglfar"))
+        if (BeastManager.getFromNameS("Naglfar").Summoned)
         {
             summonedImages.Add("Dragons Hydra-3");
             summoned.Add(BeastManager.getFromNameS("Naglfar"));
         }
-        if (beastDatabase.GetStatus("Sunbather"))
+        if (BeastManager.getFromNameS("Sunbather").Summoned)
         {
             summonedImages.Add("Boss Darklord Excelsios-1");
             summoned.Add(BeastManager.getFromNameS("Sunbather"));

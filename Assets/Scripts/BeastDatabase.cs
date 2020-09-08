@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BeastDatabase : MonoBehaviour
 {
+    /*
     //Gaia
     public static bool gaiaSummoned = true;
     public static int gaiaRating = 0;
@@ -268,5 +269,5 @@ public class BeastDatabase : MonoBehaviour
         else if (beast == "Behemoth") behemothSkill = change;
         else if (beast == "Naglfar") naglfarSkill = change;
         else if (beast == "Sunbather") sunbatherSkill = change;
-    }
+    }*/
 }

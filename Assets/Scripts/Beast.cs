@@ -9,7 +9,7 @@ namespace Assets.Scripts
     public class Beast
     {
         private bool summoned = true;
-        private int rating = 0;
+        private int rating;
         private int hitPoints = 700;
         private int defense = 60;
         private int power = 50;
@@ -32,6 +32,7 @@ namespace Assets.Scripts
         public int MoveA { get => moveA; set => moveA = value; }
         public int MoveB { get => moveB; set => moveB = value; }
         public string Static_image { get => static_image; set => static_image = value; }
+        public int Rating { get => rating; set => rating = value; }
 
         public String toString()
         {

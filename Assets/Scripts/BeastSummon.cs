@@ -50,7 +50,7 @@ public class BeastSummon : MonoBehaviour
     {
         if (currentScene.name == "CthulhuMain")
         {
-            return beastDatabase.GetRating("Cthulhu");
+            return BeastManager.getFromNameS("Cthulhu").Rating;
         }
         else
         {
@@ -63,7 +63,7 @@ public class BeastSummon : MonoBehaviour
     {
         if (currentScene.name == "CthulhuMain")
         {
-            return beastDatabase.GetStatus("Cthulhu");
+            return BeastManager.getFromNameS("Cthulhu").Summoned;
         }
         else
         {
