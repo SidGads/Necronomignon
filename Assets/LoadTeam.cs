@@ -21,7 +21,14 @@ public class LoadTeam : MonoBehaviour
         if (Input.GetKeyDown("q"))
         {
             anim.runtimeAnimatorController = Resources.Load("Animations/Abyssal/Damaged/Damaged") as RuntimeAnimatorController;
-            anim.speed = 2;
+        }
+        if (Input.GetKeyDown("w"))
+        {
+            anim.runtimeAnimatorController = Resources.Load("Animations/Abyssal/AttackA/Attack") as RuntimeAnimatorController;
+        }
+        if (Input.GetKeyDown("e"))
+        {
+            anim.runtimeAnimatorController = Resources.Load("Animations/Abyssal/AttackB/Attack") as RuntimeAnimatorController;
         }
     }
 }
